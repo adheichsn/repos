@@ -1,0 +1,168 @@
+# Quiz System
+
+- **Overview**: Dokumentasi ini menyediakan panduan komprehensif untuk implementasi dan manajemen sistem kuis interaktif yang dikembangkan menggunakan Unity Engine. Sistem ini dirancang untuk menampilkan serangkaian pertanyaan dengan pilihan jawaban yang dapat diinteraksi oleh pengguna. Ini mencakup mekanisme untuk mengevaluasi jawaban, menghitung skor, dan menyajikan feedback langsung kepada pengguna.
+- **Steps to Create Features:**
+    1. **Membuat Canvas**: Dalam Unity, buat sebuah canvas baru. Atur posisinya sesuai dengan yang diinginkan dan ubah semua nilai scale menjadi 0.001 untuk menyesuaikan dengan skala VR.
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/c3c528c4-29f0-48b0-b1c6-d90abeaaeafc/Untitled.png)
+        
+    2. **Panel Quiz**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/74629fa9-a739-4c42-8844-8fd7a55a9c25/Untitled.png)
+        
+        - Di bawah **`Canvas`**, buat **`Panel`** baru untuk menampung teks pertanyaan dan tombol jawaban. Klik kanan pada **`Canvas`**, pilih **`UI`** dan kemudian **`Panel`**. Beri nama panel ini **`Panel_Quiz`**.
+        - Pada panel ini, sesuaikan **`RectTransform`** untuk menetapkan ukuran dan posisi di layar.
+    3. **Image untuk Ilustrasi**:
+        - Jika Anda ingin menambahkan gambar untuk pertanyaan, klik kanan pada **`Panel_Quiz`**, pilih **`UI`**, kemudian **`Image`**. Sesuaikan **`RectTransform`** dari **`Image`** untuk menentukan ukuran dan posisinya dalam **`Panel_Quiz`**.
+    4. **Teks Pertanyaan**:
+        - Di dalam **`Panel_Quiz`**, tambahkan **`TextMeshPro - Text (UI)`** dengan mengklik kanan pada **`Panel_Quiz`**, pilih **`UI`** dan kemudian **`TextMeshPro - Text`**. Ini akan digunakan untuk menampilkan teks pertanyaan.
+        - Sesuaikan properti seperti **`font`**, **`font size`**, **`color`**, dan **`alignment`** agar teks pertanyaan mudah dibaca.
+    5. **Tombol Jawaban**:
+        
+        ![Screenshot 2024-01-15 133404.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/024d9950-5d8a-4584-b4b3-895fbaf14018/Screenshot_2024-01-15_133404.png)
+        
+        - Dalam Unity Editor, pastikan Anda memiliki **`Canvas`** dan **`Panel_Quiz`** yang sudah siap.
+        - Buat **`Button Group`** sebagai GameObject baru di bawah **`Panel_Quiz`**.
+        - Tambahkan komponen **`Grid Layout Group`** ke **`Button Group`**.
+            - Atur **`Padding`**, **`Cell Size`**, **`Spacing`**, dan **`Constraint`** sesuai dengan keinginan Anda.
+        - Di dalam **`Button Group`**, buat beberapa **`Button`** sebagai anak dari grup tersebut. Jumlah tombol harus sama dengan jumlah jawaban yang Anda inginkan untuk setiap pertanyaan.
+    6. **Menambahkan Script Quiz Manager ke GameObject**:
+        - Langkah pertama, silahkan buat script baru dengan nama ‘QuestManager’, kemudian salinlah kode berikut:
+            
+            ```csharp copy
+            using UnityEngine;
+            using TMPro;
+            using UnityEngine.UI;
+            using System.Collections.Generic;
+            using UnityEngine.Events;
+            
+            [System.Serializable]
+            public class Answer
+            {
+                public string answerText;
+                public bool isTrue;
+            }
+            
+            [System.Serializable]
+            public class Question
+            {
+                public string questionText;
+                public Sprite questionImage;
+                public List<Answer> answers;
+            }
+            
+            public class QuizManager : MonoBehaviour
+            {
+                public List<Question> questions;
+                private int currentQuestionIndex;
+                private int score;
+            
+                // komponen UI
+                public TextMeshProUGUI questionTextUI;
+                public Image questionImageUI;
+                public List<Button> answerButtons;
+            
+                // UI untuk menampilkan skor
+                public GameObject scorePanel;
+                public TextMeshProUGUI scoreTextUI;
+            
+                [Space]
+                public UnityEvent OnQuizFinished;
+            
+                void Start()
+                {
+                    StartQuiz();
+                }
+            
+                public void StartQuiz()
+                {
+                    currentQuestionIndex = 0;
+                    score = 0;
+                    DisplayQuestion();
+                }
+            
+                void DisplayQuestion()
+                {
+                    if (currentQuestionIndex < questions.Count)
+                    {
+                        Question currentQuestion = questions[currentQuestionIndex];
+                        questionTextUI.text = currentQuestion.questionText;
+                        questionImageUI.sprite = currentQuestion.questionImage;
+                        questionImageUI.gameObject.SetActive(currentQuestion.questionImage != null);
+            
+                        for (int i = 0; i < answerButtons.Count; i++)
+                        {
+                            if (i < currentQuestion.answers.Count)
+                            {
+                                answerButtons[i].gameObject.SetActive(true);
+                                answerButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = currentQuestion.answers[i].answerText;
+            
+                                int answerIndex = i;
+                                answerButtons[i].onClick.RemoveAllListeners();
+                                answerButtons[i].onClick.AddListener(() => CheckAnswer(answerIndex));
+                            }
+                            else
+                            {
+                                answerButtons[i].gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        EndQuiz();
+                    }
+                }
+            
+                public void CheckAnswer(int answerIndex)
+                {
+                    if (questions[currentQuestionIndex].answers[answerIndex].isTrue)
+                    {
+                        score++;
+                    }
+            
+                    currentQuestionIndex++;
+                    DisplayQuestion();
+                }
+            
+                public void RestartQuiz()
+                {
+                    questionTextUI.gameObject.SetActive(true);
+                    questionImageUI.gameObject.SetActive(true);
+                    foreach (var item in answerButtons)
+                    {
+                        item.gameObject.SetActive(true);
+                    }
+            
+                    if (scorePanel.activeSelf)
+                        scorePanel.SetActive(false);
+            
+                    StartQuiz();
+                }
+            
+                void EndQuiz()
+                {
+                    scorePanel.SetActive(true);
+                    scoreTextUI.text = $"Your Skor: {score} / {questions.Count}";
+                    Debug.Log(scoreTextUI.text);
+            
+                    OnQuizFinished?.Invoke();
+            
+                    // Sembunyikan pertanyaan dan jawaban
+                    questionTextUI.gameObject.SetActive(false);
+                    questionImageUI.gameObject.SetActive(false);
+                    foreach (var item in answerButtons)
+                    {
+                        item.gameObject.SetActive(false);
+                    }
+                }
+            }
+            ```
+            
+        - Pilih GameObject di Hierarchy yang akan berfungsi sebagai **`QuizManager`**. Ini biasanya GameObject kosong yang dibuat khusus untuk mengelola kuis.
+        - Dengan GameObject tersebut terpilih, di Inspector, klik **`Add Component`**.
+        - Cari **`QuizManager`** dan tambahkan komponen script tersebut ke GameObject.
+    7. **Mengaitkan Komponen UI ke Script**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/0f5f4808-9e05-4c89-95d4-0b3615ddfc9b/Untitled.png)
+        
+        - Silahkan buka game object **`QuizManager`** dan hubungkan komponen-komponen yang perlu dimasukkan ke dalam variable referensi.

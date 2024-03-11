@@ -1,0 +1,21 @@
+# Popup Information
+
+- **Overview**: Fitur "Popup Informasi" di VR menampilkan kotak informasi yang memberikan teks dan gambar biasanya muncul saat pengguna berinteraksi dengan elemen tertentu dalam game untuk memberi mereka penjelasan atau umpan balik.
+- **Steps to Create Features:**
+    - Langkah pertama adalah membuat gameObject canvas dengan, render mode ‘World Space’, dan sesuaikan scaling seperti berikut :
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/19c8c5fd-3f6c-4296-8f4f-34ca79bb26c5/Untitled.png)
+        
+    - Tambahkan komponen ‘TrackedDeviceGraphicRaycaster’ agar raycast dapat mendeteksi gameObject.
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/495f69cd-78fd-47f2-86c7-fbef4cfb7a8b/Untitled.png)
+        
+    - Tambahkan gameObject panel berserta komponen textMeshPro dan Image yang menjadi anak dari gameObject Panel.
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/f8e6e822-1f4d-48c9-befa-27f78f71cdc4/Untitled.png)
+        
+    - Unable checkbox untuk gameObject panel untuk mengatur panel akan tidak terlihat apabila gameObject tidak dienable melalui Button Event OnClick().
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/21527e6d-eaeb-44a2-9ae1-054b161851ea/Untitled.png)
+        
+    - Tambahkan fungsi ‘SetActive()’ untuk menampilkan panel dan menyembunyikan button.

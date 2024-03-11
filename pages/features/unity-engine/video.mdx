@@ -1,0 +1,33 @@
+# Video Player
+
+- **Overview**: komponen yang memungkinkan Anda untuk memutar video dalam proyek virtual reality Anda. Ini bisa digunakan untuk berbagai tujuan seperti cutscenes, latar belakang dinamis, atau bahkan sebagai bagian dari gameplay.
+- **Steps to Create Features:**
+    1. **Import File Video**: Pertama, Anda perlu mengimpor file video ke dalam proyek Unity Anda. Anda bisa melakukan ini dengan menyeret file video langsung ke dalam folder Assets di Unity Editor.
+    2. **Menambahkan Video Player Component**:
+        - Buat GameObject baru di scene Anda, atau pilih GameObject yang ada di mana Anda ingin memutar video.
+        - Di Inspector Window, klik **`Add Component`**.
+        - Cari dan pilih **`Video Player`**.
+    3. **Konfigurasi Video Player**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/6597ae08-cf49-4af3-ae2e-67540f1ba199/Untitled.png)
+        
+        - Di komponen Video Player, atur sumber video (**`Video Clip`** atau **`URL`**) sesuai dengan kebutuhan Anda.
+        - Jika Anda menggunakan **`Video Clip`**, Anda bisa menyeret dan melepaskan file video dari folder Assets ke field Video Clip.
+        - Jika Anda menggunakan **`URL`**, masukkan URL video yang ingin Anda putar.
+    4. **Pengaturan Output**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/f9b9a650-76d7-4eb6-bdd3-3a205012804c/Untitled.png)
+        
+        - Untuk menampilkan video, Anda perlu menentukan target render. Ini bisa berupa **`Render Texture`** atau langsung ke **`Material`** pada suatu objek.
+        - Jika Anda ingin menampilkan video pada objek UI (seperti Raw Image), buat objek UI **`Raw Image`** untuk setiap video di Canvas dan tetapkan **`Render Texture`** yang relevan ke properti **`Texture`** dari Raw Image.
+        - Jika Anda ingin memutar video pada sebuah objek 3D (seperti layar), buat Material baru dan tetapkan kepada objek tersebut. Kemudian, atur Video Player untuk merender ke Material tersebut.
+    5. **Kontrol Playback**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/1abc2622-6692-4451-bc06-d485803a5d45/Untitled.png)
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/243b32d2-e234-4130-911b-a99629589645/Untitled.png)
+        
+        - Anda bisa mengontrol playback (seperti play, pause, stop) melalui skrip. Gunakan referensi ke komponen Video Player dalam skrip Anda untuk mengendalikan video.
+    6. **Audio (Opsional)**:
+        - Jika video Anda memiliki audio dan Anda ingin memutarnya, pastikan Anda mengatur sumber audio di Video Player.
+        - Anda bisa menambahkan komponen Audio Source ke GameObject yang sama dan mengatur Video Player untuk menggunakan sumber audio tersebut.

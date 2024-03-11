@@ -1,0 +1,100 @@
+# Virtual Keyboard
+
+- **Overview**: Virtual keyboard adalah alat input yang memungkinkan pengguna memasukkan teks dalam lingkungan VR. Ini sangat berguna karena perangkat input tradisional seperti keyboard fisik tidak mudah digunakan dalam VR.
+    
+    Contoh Kegunaan dalam VR:
+    
+    - **Komunikasi dalam Game VR**: Pemain dapat menggunakan virtual keyboard untuk berkomunikasi dengan pemain lain dalam game multiplayer VR.
+    - **Input Data dalam Aplikasi Edukasi VR**: Dalam aplikasi pendidikan VR, siswa dapat menggunakan virtual keyboard untuk menjawab pertanyaan atau menyelesaikan tugas.
+    - **Pencarian dalam Pengalaman VR**: Pengguna dapat mencari konten atau menjelajahi menu menggunakan virtual keyboard dalam aplikasi atau pengalaman VR.
+    
+- **Steps to Create Features:**
+    1. **Unduh Asset**: Kunjungi halaman GitHub [MRTK-Keyboard](https://github.com/Ayfel/MRTK-Keyboard) dan unduh repositori tersebut.
+    2. **Impor ke Unity**: Buka proyek Unity Anda dan impor asset yang telah diunduh.
+    3. **Membuat Canvas**: Dalam Unity, buat sebuah canvas baru. Atur posisinya sesuai dengan yang diinginkan dan ubah semua nilai scale menjadi 0.001 untuk menyesuaikan dengan skala VR.
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/da998ad4-99cc-4353-a63e-b59e9180a954/Untitled.png)
+        
+    4. **Menambahkan InputField**: Pada canvas tersebut, tambahkan komponen **`InputField`**. Ini akan menjadi tempat pemain memasukkan teks.
+    5. **Integrasi dengan MRTK-Keyboard**:
+        - Impor asset MRTK-Keyboard ke dalam proyek Anda.
+        - Buat skrip dan beri nama `**KeyboardController**` untuk menghubungkan InputField dengan MRTK-Keyboard. Ini akan memungkinkan pemain memasukkan teks menggunakan keyboard virtual.
+            
+            ```csharp copy
+            using UnityEngine.Events;
+            using UnityEngine;
+            using TMPro;
+            using Microsoft.MixedReality.Toolkit.Experimental.UI;
+            
+            [System.Serializable]
+            public class StringKeyboardOutput : UnityEvent<string> { }
+            
+            public class KeyboardController : MonoBehaviour
+            {
+                public TMP_InputField inputField;
+            
+                public float distance = 0.5f;
+                public float verticalOffset = -0.5f;
+            
+                public Transform possitionCam;
+            
+                [Space]
+                public StringKeyboardOutput OnGetKeyboardOuput;
+            
+                void Start()
+                {
+                    if (OnGetKeyboardOuput == null)
+                        OnGetKeyboardOuput = new StringKeyboardOutput();
+            
+                    inputField.onSelect.AddListener(x => OpenKeyboard());
+                }
+            
+                public void OpenKeyboard()
+                {
+                    NonNativeKeyboard.Instance.InputField = inputField;
+                    NonNativeKeyboard.Instance.PresentKeyboard(inputField.text);
+            
+                    if (possitionCam != null)
+                    {
+                        Vector3 direction = possitionCam.forward;
+                        direction.y = 0;
+                        direction.Normalize();
+            
+                        Vector3 targetPos = possitionCam.position + direction * distance + Vector3.up * verticalOffset;
+                        NonNativeKeyboard.Instance.RepositionKeyboard(targetPos);
+            
+                        Debug.LogWarning($"The keyboard controller does not find the value of positionCam, enter the transform camera origin into a variable");
+                    }
+            
+                    SetCaretColorAlpha(1);
+            
+                    NonNativeKeyboard.Instance.OnClosed += Instance_OnClosed;
+                }
+            
+                private void Instance_OnClosed(object sender, System.EventArgs a)
+                {
+                    SetCaretColorAlpha(0);
+                    NonNativeKeyboard.Instance.OnClosed -= Instance_OnClosed;
+                }
+            
+                public void SetCaretColorAlpha(float value)
+                {
+                    inputField.customCaretColor = true;
+                    Color caretColor = inputField.caretColor;
+                    caretColor.a = value;
+                    inputField.caretColor = caretColor;
+                }
+            
+                public void OnClickSubmit()
+                {
+                    string msg = inputField.text.ToString();
+            
+                    // Debug.Log($"player submit text: '{msg}'");
+            
+                    if (OnGetKeyboardOuput != null)
+                        OnGetKeyboardOuput.Invoke(msg);
+                }
+            }
+            ```
+            
+        - Tambahkan komponen script `**KeyboardController`** ke dalam game object canvas, dan hubungkan komponen Input Field dan Possition Main Camera dengan keyboard controller.

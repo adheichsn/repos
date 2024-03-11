@@ -1,0 +1,45 @@
+# Object Interactive
+
+- **Overview**: Dalam Virtual Reality, "Object Interactive" adalah istilah untuk **objek virtual yang bisa berinteraksi** langsung dengan pengguna. Objek-objek ini bisa **dipegang, dipindahkan, atau dimodifikasi**, memberikan sensasi yang lebih nyata dan menarik. Kemampuan untuk berinteraksi dengan elemen-elemen dalam lingkungan virtual ini memainkan peran kunci dalam memberikan pengalaman yang mendalam dan autentik dalam berbagai aplikasi dan game VR.
+
+## XR Grab Interactable Component
+
+Komponen **XR Grab Interactable** dalam XR Interaction Toolkit di Unity adalah komponen yang digunakan untuk membuat objek dapat diambil atau dipegang oleh pengguna dalam lingkungan VR atau AR. Saat komponen ini ditambahkan ke objek **agar objek tersebut mampu bereaksi terhadap aksi 'grab' (mengambil) dari pengguna**.
+
+Untuk membuat Object Interactive menggunakan komponen **XR Grab Interactable** di XR Interaction Toolkit:
+
+1. **Pilih atau Buat Objek**: Di Unity, pilih atau buat objek yang ingin Anda buat interaktif.
+2. **Tambahkan XR Grab Interactable**: Di Inspector Window, tambahkan komponen **XR Grab Interactable** ke objek tersebut.
+3. **Konfigurasikan Properti**: Atur properti dalam XR Grab Interactable sesuai kebutuhan, seperti mengatur bagaimana objek bisa diambil atau dilepaskan.
+4. **Tambahkan Rigidbody**: Untuk interaksi fisik yang realistis, tambahkan komponen Rigidbody ke objek.
+
+Dengan langkah-langkah ini, objek di VR Anda akan bisa diinteraksi dengan menggunakan controller VR. silahkan kunjungi [dokumentasi](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/xr-grab-interactable.html) untuk mempelajari komponen lebih jelas.
+
+## Setup basic intractable object
+
+![intractable cube.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/8e091d34-f9ec-43ef-b92a-12cec6511645/intractable_cube.png)
+
+1. **Transform**: Menunjukkan posisi, rotasi, dan skala dari objek. Ini adalah komponen dasar untuk setiap GameObject yang menentukan lokasi dan orientasinya dalam scene.
+2. **Mesh Filter**: Memuat mesh yang akan ditampilkan oleh Mesh Renderer.
+3. **Mesh Renderer**: Bertanggung jawab untuk merender mesh ke layar yang menggunakan material yang diberikan.
+4. **Mesh Collider**: Menyediakan bentuk fisik untuk deteksi tabrakan, berdasarkan mesh yang ada.
+5. **Rigidbody**: Menambahkan fisika pada objek, memungkinkannya untuk bereaksi terhadap gaya dan tumbukan dalam dunia fisika Unity.
+6. **XR Grab Interactable**: Merupakan komponen dari XR Interaction Toolkit yang memungkinkan objek ini untuk diinteraksi dengan menggunakan sistem XR. Memiliki berbagai pengaturan seperti Movement Type (dalam hal ini diatur ke "Velocity Tracking"), yang menentukan bagaimana objek akan bergerak ketika diinteraksi dalam VR.
+
+Komponen-komponen ini bekerja bersama untuk membuat "Cube (Interactable)" menjadi objek yang bisa diinteraksi dalam lingkungan XR. Pengaturan pada XR Grab Interactable memungkinkan objek untuk diambil dan dimanipulasi oleh pengguna dalam VR.
+
+![Screenshot 2023-11-23 175049.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/490e75e8-f843-499a-af55-71e535b0706b/Screenshot_2023-11-23_175049.png)
+
+Dalam komponen XR Grab Interactable dari XR Interaction Toolkit, **"Interactable Events" adalah event yang dapat di-trigger selama interaksi dengan objek.** Berikut adalah beberapa contoh event yang terlihat pada screenshot:
+
+1. **First/Last Hover**
+    - **First Hover Entered**: Dipicu ketika controller pertama kali mengarahkan kursor atau raycast ke objek.
+    - **Last Hover Exited**: Dipicu ketika controller terakhir berhenti mengarahkan kursor atau raycast ke objek, sehingga tidak ada lagi yang 'hovering' di atas objek tersebut.
+2. **Hover**
+    - **Hover Entered**: Dipicu setiap kali controller mulai 'hover' di atas objek.
+    - **Hover Exited**: Dipicu setiap kali controller berhenti 'hover' di atas objek.
+3. **First/Last Select**
+    - **First Select Entered**: Dipicu ketika objek pertama kali dipilih.
+    - **Last Select Exited**: Dipicu ketika objek terakhir kali diseleksi dan proses seleksi berakhir.
+
+Event-event ini memungkinkan pengembang untuk **menetapkan respons khusus pada objek** ketika interaksi tertentu terjadi, seperti memicu animasi, suara, atau tindakan lainnya dalam game atau aplikasi VR.

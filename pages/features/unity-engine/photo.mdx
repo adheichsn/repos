@@ -1,0 +1,38 @@
+# Environment Photo 360
+
+- **Overview**: Environment 360 photo, atau yang sering disebut sebagai foto 360 derajat atau panorama 360, adalah jenis gambar yang memungkinkan pengguna untuk melihat lingkungan di sekeliling titik asal foto dalam radius 360 derajat horizontal dan 180 derajat vertikal. Ini memberikan pandangan immersive yang seolah-olah pengguna berada di pusat lingkungan tersebut dan dapat melihat sekeliling dengan memutar pandangan ke semua arah.
+- **Steps to Create Features:**
+    1. **Import Foto 360**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/ec3f995e-377f-47a4-a635-026613a6916e/Untitled.png)
+        
+        - Import foto 360 Anda ke Unity dengan cara drag and drop file tersebut ke dalam Project panel.
+        - Pilih texture yang telah di-import, dan di Inspector panel, ubah settingnya:
+            - Texture Type: Pilih **`Default`**.
+            - Texture Shape: Pilih **`Cube`** jika foto Anda adalah cubemap.
+            - Generate Mip Maps: Nonaktifkan ini karena kita tidak memerlukannya untuk skybox dalam.
+            - Wrap Mode: Pilih **`Clamp`** untuk menghindari repeat pada tepi.
+        - Klik **`Apply`**.
+    2. **Buat Material**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/c6f147f9-37fb-4959-9d6a-a8c0870339d4/Untitled.png)
+        
+        - Klik kanan di Project panel dan pilih **`Create > Material`**.
+        - Pilih material yang baru Anda buat dan di Inspector panel, ubah shader menjadi **`Skybox/Cubemap`** untuk cubemap.
+    3. **Terapkan Texture ke Material**:
+        - Drag foto 360 dari Project panel ke slot yang sesuai pada material yang baru Anda buat. Biasanya, slot tersebut akan bernama **`Main Texture`** atau sesuatu yang serupa.
+    4. **Buat Sphere**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/f01db4a4-adcf-47e2-a238-0270d9ce1337/Untitled.png)
+        
+        - Tambahkan objek sphere ke dalam scene Anda (**`GameObject > 3D Object > Sphere`**).
+        - Tempatkan posisi spahe menjadi posisi default yakni possition X, Y, dan Z bernilai 0.
+        - Atur sekala dari game object jika anda ingin membesarkan area foto.
+    5. **Terapkan Material ke Sphere**:
+        - Drag material dengan foto 360 ke sphere tersebut.
+    6. **Posisikan Kamera**:
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/80c23fe9-36ae-43de-a6c4-fca2fef49866/Untitled.png)
+        
+        - Letakkan kamera di tengah sphere.
+        - Pastikan kamera tidak memiliki **`Skybox`** komponen atau layer yang tidak di-render oleh kamera tersebut, jadi atur clear flags menjadi `**Solid Color**`.

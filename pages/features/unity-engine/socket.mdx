@@ -1,0 +1,41 @@
+# Socket Interactor
+
+- **Overview**: "Socket Interactor" adalah komponen yang memungkinkan objek-objek di VR untuk diinteraksikan dengan cara spesifik, terutama untuk menyambungkan objek yang bisa diambil (seperti alat atau item) ke lokasi tertentu. Ini sering digunakan untuk membuat mekanisme 'snap-in', di mana objek secara otomatis menempel atau menyatu dengan posisi yang ditentukan ketika didekatkan. Fitur ini berguna untuk tugas-tugas seperti menyusun objek, menyelesaikan puzzle, atau meletakkan item di tempat yang benar. "Socket Interactor" menyediakan cara yang intuitif dan efisien untuk mengatur interaksi lebih kompleks dalam lingkungan VR.
+
+## XR Socket Interactor Component
+
+Komponen **XR Socker Interactor** dalam XR Interaction Toolkit di Unity adalah komponen yang digunakan untuk membuat objek dapat diletakan atau dipasang pada posisi yang telah disesuaikan oleh pengguna dalam lingkungan VR. 
+
+Untuk membuat Object Socket Interactor menggunakan komponen **XR Grab Interactable** di XR Interaction Toolkit:
+
+1. **Pilih atau Buat Objek**: Di Unity, pilih atau buat objek yang ingin Anda buat interaktif.
+2. **Tambahkan XR Socket Interactor** : Di Inspector Window, tambahkan komponen **XR Socket Interactor** ke objek tersebut.
+3. **Konfigurasikan Properti**: Atur properti dalam XR Socket Interactor sesuai kebutuhan, seperti mengatur bagaimana posisi objek ketika diletakan.
+4. **Tambahkan Collider isTrigger**: Untuk interaksi socket Interactor, objek yang menjadi socket harus memiliki collider yang component **IsTrigger** diceklis.
+
+Dengan langkah-langkah ini, objek di VR Anda akan bisa diinteraksi dengan menggunakan controller VR. silahkan kunjungi [dokumentasi](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/xr-socket-interactor.html?q=socket) untuk mempelajari komponen lebih jelas.
+
+## Setup basic intractable object
+
+![Screenshot 2023-12-12 145800.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/f6701f5c-060b-4de8-a81d-e53826f33ef1/Screenshot_2023-12-12_145800.png)
+
+![intractable cube.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/8e091d34-f9ec-43ef-b92a-12cec6511645/intractable_cube.png)
+
+1. **Transform**: Menunjukkan posisi, rotasi, dan skala dari objek. Ini adalah komponen dasar untuk setiap GameObject yang menentukan lokasi dan orientasinya dalam scene. Pada socket interactor, posisi dan rotasi transform berpengaruh pada orientasi objek yang akan ditempatkan pada socket
+2. **Mesh Filter**: Memuat mesh yang akan ditampilkan oleh Mesh Renderer.
+3. **Mesh Renderer**: Bertanggung jawab untuk merender mesh ke layar yang menggunakan material yang diberikan.
+4. **Box** **Collider**: Menyediakan bentuk fisik untuk deteksi tabrakan, berdasarkan objek yang ada. Pada Socket Interactor, collider ini berfungsi sebagai sensor apakah objek sudah dapat diletakan atau belum.
+5. **XR Socket Interactor**: Merupakan komponen dari XR Interaction Toolkit yang memungkinkan objek ini untuk diinteraksi dengan menggunakan sistem XR.
+
+![Screenshot 2023-12-12 150408.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/fe4f1321-98bd-48d2-b759-6be2ca43291c/Screenshot_2023-12-12_150408.png)
+
+Dalam komponen XR Socket Interactor dari XR Interaction Toolkit, **"Interactor Events" adalah event yang dapat di-trigger selama interaksi dengan objek.** Berikut adalah beberapa contoh event yang terlihat pada screenshot:
+
+1. **Hover**
+    - **Hover Entered**: Dipicu ketika objek pertama kali masuk ke collider objek.
+    - **Hover Exited**: Dipicu ketika objek keluar dari collider objek.
+2. **Select**
+    - **Select Entered**: Dipicu ketika objek telah terposisikan di socket interactor.
+    - **Select Exited**: Dipicu ketika objek telah diambil dari socket interactor.
+
+Event-event ini memungkinkan pengembang untuk **menetapkan respons khusus pada objek** ketika interaksi tertentu terjadi, seperti memicu animasi, suara, atau tindakan lainnya dalam game atau aplikasi VR.

@@ -1,0 +1,35 @@
+# Navigation
+
+- **Overview**: Navigasi antarscene dalam VR memudahkan pengguna untuk pindah dari satu area virtual ke area lain, seperti menuju level baru atau kembali ke menu utama, sering kali melalui menu atau objek seperti pintu di dalam game. Ini memungkinkan pengalaman yang berkelanjutan dan beragam dalam aplikasi VR.
+- **Steps to Create Features:**
+    1. Langkah pertama anda dapat class dengan nama ‘Navigation’ setelah itu masukkan script berikut :
+
+        ```csharp copy
+        using UnityEngine;
+        using UnityEngine.SceneManagement;
+
+        public class Navigation : MonoBehaviour
+        {
+        		public string targetNextSceneName;
+        	  public void OnClickChangeScene()
+        	  {
+        	      SceneManager.LoadScene(targetNextSceneName);
+        	  }
+        }
+        ```
+
+    2. **Membuat Canvas**: Dalam Unity, buat sebuah canvas baru. Atur posisinya sesuai dengan yang diinginkan dan ubah semua nilai scale menjadi 0.001 untuk menyesuaikan dengan skala VR.
+
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/c3c528c4-29f0-48b0-b1c6-d90abeaaeafc/Untitled.png)
+
+    3. Tambahkan scene ke dalam list scene in build pada window build settings
+
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/bcfa23df-545c-468c-8b0f-be00b6bfba0a/Untitled.png)
+
+    4. Tambahkan komponen button, kemudian tambahkan komponen Navigation pada button, setelah itu panggil fungsi ‘OnClickChangeScene()’ pada Event OnClick.
+
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/a6bc0c55-cfd1-4d8e-bdcd-1f7952682fd6/Untitled.png)
+
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/6dcf1fa1-5cd4-47fd-b17d-ecccceab4839/Untitled.png)
+
+    1. Tambahkan komponen `**TrackedDeviceGraphicRaycaster**` pada game object canvas agar raycast dapat mendeteksi gameObject.

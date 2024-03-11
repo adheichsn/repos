@@ -1,0 +1,107 @@
+# Quest Manager ( Todo List )
+
+- **Overview**: sebuah sistem manajemen quest sederhana untuk game yang dibuat dengan Unity. Ini memungkinkan pengembang untuk menambahkan, memantau, dan mengelola quests dalam game mereka. **`QuestManager`** berguna dalam game yang membutuhkan pemain untuk menyelesaikan serangkaian tugas atau misi.
+- **Steps to Create Features:**
+    - Langkah pertama, silahkan buat script baru dengan nama ‘QuestManager’, kemudian salinlah kode berikut:
+        
+        ```csharp copy
+        using System.Collections.Generic;
+        using UnityEngine;
+        using TMPro;
+        using UnityEngine.Events;
+        
+        public class QuestManager : MonoBehaviour
+        {
+            [System.Serializable]
+            public class Quest
+            {
+                public string Description;
+                public bool IsFinished;
+        
+                public Quest(string description)
+                {
+                    Description = description;
+                    IsFinished = false;
+                }
+            }
+        
+            [SerializeField] private List<Quest> quests = new List<Quest>();
+        
+            public TextMeshProUGUI questsText;
+            public bool printIntoUI = false;
+        
+            [Space]
+            public UnityEvent OnQuestsFinished;
+        
+            void Start()
+            {
+                UpdateQuestsUI();
+            }
+        
+            public void AddQuest(string description)
+            {
+                quests.Add(new Quest(description));
+                UpdateQuestsUI();
+            }
+        
+            public void CompleteQuest(int questIndex)
+            {
+                if (questIndex >= 0 && questIndex < quests.Count)
+                {
+                    quests[questIndex].IsFinished = true;
+                    UpdateQuestsUI();
+        
+                    CheckAllQuestsCompleted();
+                }
+            }
+        
+            public void ResetQuests()
+            {
+                foreach (Quest quest in quests)
+                {
+                    quest.IsFinished = false;
+                }
+        
+                UpdateQuestsUI();
+            }
+        
+            void UpdateQuestsUI()
+            {
+                if (!printIntoUI) return;
+        
+                string questText = "";
+                foreach (Quest quest in quests)
+                {
+                    questText += quest.Description + (quest.IsFinished ? " (Selesai)\n" : " (Belum Selesai)\n");
+                }
+                questsText.text = questText;
+            }
+        
+            public void CheckAllQuestsCompleted()
+            {
+                foreach (Quest quest in quests)
+                {
+                    if (!quest.IsFinished)
+                        return;
+                }
+        
+                OnQuestsFinished.Invoke();
+            }
+        }
+        ```
+        
+    - Tempelkan skrip tersebut ke GameObject kosong di dalam scene Anda. tambahkan item list untuk mengisi todo list apa yang akan menjadi misi yang harus diselesaikan oleh user.
+    - Fungsi **`AddQuest`** digunakan untuk menambahkan quest baru ke dalam daftar quests. Setiap quest ditambahkan dengan deskripsi tertentu.
+    - Fungsi **`CompleteQuest`** memungkinkan Anda untuk menandai quest tertentu sebagai selesai. Ini mengambil indeks quest dalam daftar sebagai parameter.
+    - Fungsi **`ResetQuests`** digunakan untuk mengatur ulang status dari semua quests menjadi tidak selesai.
+    - **`OnQuestsFinished`** adalah UnityEvent yang dipicu ketika semua quests telah diselesaikan.
+    
+- **Print todo list into UI:**
+    - **Membuat Canvas**: Dalam Unity, buat sebuah canvas baru. Atur posisinya sesuai dengan yang diinginkan dan ubah semua nilai scale menjadi 0.001 untuk menyesuaikan dengan skala VR.
+        
+        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/05cdfccc-adb3-469e-aac5-6dc11ecc1b49/c3c528c4-29f0-48b0-b1c6-d90abeaaeafc/Untitled.png)
+        
+    - **Tambahkan Text UI**: klik kanan di dalam Hierarchy window dan pilih `UI -> Text - TextMeshPro`. Ini akan menambahkan elemen Text ke scene Anda beserta canvas dan event system yang diperlukan.
+    - Sesuaikan TextMeshPro object untuk menempatkannya di lokasi yang Anda inginkan di layar. Anda dapat mengubah ukuran, warna, font, dan properti lainnya dari panel inspector.
+    - **Hubungkan dengan Script**: Dalam Unity Inspector, sambungkan elemen Text UI yang telah Anda buat ke properti `**questsText**` di **`QuestManager`** script.
+    - Checklist variable ‘printIntoUI’ untuk menampilkan todo list dalam UI menggunakan komponen TextMeshPro.

@@ -1,7 +1,10 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "system": "System Requirements",
+  "engine": "Engine Virtual Reality",
+  "installation" : "Installation",
+  "features": "Features",
+  "vr-tour": "Virtual Reality Tour",
   "about": {
     "title": "About",
     "type": "page"
