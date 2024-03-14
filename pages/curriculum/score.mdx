@@ -1,0 +1,109 @@
+# Score Manager
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Cara Menentukan Score di Unity :** Siswa dapat mengerti dasar dari managemen score
+2. **Kapabilitas Mengimplementasikan Score Management** : Siswa dapat mengimplementasikan logic untuk membuat score bertambah maupun berkurang, serta siswa diharapkan dapat memodifikasi logic sesuai kebutuhan
+</aside>
+
+## How to Use Score Manager
+
+Pertama, buat script baru di Unity. Anda bisa melakukannya dengan klik kanan di dalam Project Window, **pilih 'Create' > 'C# Script',** setelah itu Beri nama script tersebut **ScoreManager,** kemudian **tulis Fungsi untuk Menambahkan & Mengurangi Score.** Contoh kodenya adalah sebagai berikut:
+
+![Screenshot 2023-12-12 133903.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/dcb4d48d-254e-464b-bdd5-52c9a7707d5d/Screenshot_2023-12-12_133903.png)
+
+```csharp copy
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using TMPro;
+
+public class ScoreManager : MonoBehaviour
+{
+    [SerializeField] private int currentScore;
+    [SerializeField] private int scoreMax;
+    private bool isScoreMaxReached = false;
+
+    [Space]
+    public UnityEvent OnScoreFinished;
+    [Space]
+
+    public TextMeshProUGUI scoreText;
+
+    void Start()
+    {
+        currentScore = 0;
+        UpdateScoreUI();
+    }
+
+    public void AddScore(int amount)
+    {
+        if (isScoreMaxReached)
+        {
+            Debug.Log("Score max reached, cannot add more score.");
+            return;
+        }
+
+        currentScore += amount;
+        UpdateScoreUI();
+
+        CheckScore();
+    }
+
+    public void SubtractScore(int amount)
+    {
+        if (isScoreMaxReached)
+        {
+            Debug.Log("Score max reached, cannot subtract score.");
+            return;
+        }
+
+        currentScore -= amount;
+        if (currentScore < 0)
+        {
+            currentScore = 0;
+        }
+        UpdateScoreUI();
+
+        CheckScore();
+    }
+
+    private void CheckScore()
+    {
+        if (currentScore >= scoreMax && !isScoreMaxReached)
+        {
+            isScoreMaxReached = true;
+            OnScoreFinished.Invoke();
+        }
+    }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + currentScore.ToString();
+        }
+    }
+}
+```
+
+Pada script diatas merupakan contoh logic sederhana yang memiliki fungsi untuk menambahkan score dan juga mengurangi score.
+
+**Tambahkan script ini ke sebuah GameObject**. Anda bisa menggunakan GameObject baru dengan nama “ScoreManager” (klik kanan di Hierarchy Window, pilih 'Create Empty'). **Drag script “ScoreManager”** dari Project Window ke GameObject tersebut. Fungsi ini dapat diimplementasikan pada event manapun, cukup drag GameObject “ScoreManager” ke event yang diinginkan lalu pilih **“ScoreManager”** dan tetapkan fungsi mana yang ingin digunakan antara mengurangi score atau menambahakan.
+
+![Screenshot 2023-12-12 133955.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/34341561-94ea-4ab7-a48e-0a4d8ab2e1cf/Screenshot_2023-12-12_133955.png)
+
+<aside>
+🌟 **Study Case**
+
+1. Buat 2 object berbeda, 1 untuk object  grab interactable dan 1 untuk socket interactor
+2. Buat sebuah script baru dengan nama ‘Scoremanager’ lalu buat fungsi sederhana yang dapat menambahkan score maupun mengurangi.
+3. Pada Socket Interactor, tepatnya event select, panggil fungsi menabahkan pada select enter dan fungsi mengurangi pada select exited.
+</aside>

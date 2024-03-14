@@ -1,0 +1,33 @@
+# Doors or Box Interaction
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Interaksi Spesifik Objek**: Memahami cara kerja interaksi dengan objek tangga dalam VR, termasuk mekanisme naik dan turun.
+2. **Konfigurasi Komponen XR**: Mengerti cara mengkonfigurasi komponen XR untuk menyesuaikan perilaku objek interaktif.
+</aside>
+
+## Summary
+
+pintu dan kotak dengan tutup yang dapat dibuka-tutup, adalah contoh umum dari interaksi objek dalam VR. Keduanya menggunakan mekanisme berbasis engsel (hinge) untuk gerakan realistis. Pintu bergerak pada sumbu vertikal, memungkinkan akses masuk atau keluar, sedangkan tutup kotak bergerak pada sumbu yang memisahkan atau menyatukan bagian atas dengan bawah. Keduanya memanfaatkan collider untuk interaksi fisik dan rigidbody untuk dinamika. Interaksi ini menambah dimensi keterlibatan dan realisme pada aplikasi atau game VR, memberikan pengguna kontrol lebih dalam mengeksplorasi dan berinteraksi dengan lingkungan virtual.
+
+## How to make a door mechanism?
+
+![Screenshot 2023-11-24 111303.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/e07e57e7-fd9b-43c4-89b1-2a7dcd8e0a7c/Screenshot_2023-11-24_111303.png)
+
+Untuk membuat interaksi dengan pintu menggunakan komponen Hinge Joint di Unity, ikuti langkah-langkah ini:
+
+1. **Buat atau Impor Model Pintu**: Siapkan model pintu dalam scene Unity Anda.
+2. **Tambahkan Hinge Joint**: Pilih objek pintu dan tambahkan komponen **Hinge Joint** melalui Inspector Window. Hinge Joint akan berfungsi sebagai poros pintu.
+3. **Konfigurasi Hinge Joint**: Sesuaikan properti seperti Anchor, Axis, dan batasan (Limits) untuk menentukan bagaimana pintu akan bergerak.
+4. **Tambahkan Collider dan Rigidbody**: Tambahkan **Rigidbody** ke pintu (tanpa gravitasi) dan tambahkan **Collider** sesuai dengan bentuk pintu.
+5. **Interaksi**: Implementasikan cara untuk pengguna berinteraksi dengan pintu, seperti menambahkan XR Grab Interactable atau script kustom yang memungkinkan pengguna untuk 'mendorong' atau 'menarik' pintu untuk membukanya.
+6. **Uji dan Sesuaikan**: Jalankan scene untuk menguji dan sesuaikan pengaturan Hinge Joint sampai pintu bergerak secara realistis dan sesuai keinginan.
+
+<br/>
+<aside>
+🌟 **Study Case: Membuka box**
+
+1. **Desain Kotak**: Buat kotak dengan tutup yang dapat dibuka dan dilengkapi dengan engsel virtual.
+2. **Mekanisme Pembukaan**: Implementasikan mekanisme interaktif menggunakan XR Grab Interactable atau script kustom sehingga pemain dapat membuka tutup kotak.
+</aside>
