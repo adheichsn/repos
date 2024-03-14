@@ -1,0 +1,65 @@
+# Canvas Interaction
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Canvas Unity** : Memperoleh pengetahuan tentang canvas yang digunakan untuk membuat VR di Unity.
+2. **Kemampuan Untuk Menggunakan Canvas** : Memahami cara menggunakan Canvas Unity untuk membuat UI.
+3. **Interaksi Terhadap Kanvas** : Belajar membuat kanvas yang dapat memiliki interaksi.
+</aside>
+
+## What is Canvas in Unity
+
+Kanvas adalah area di mana **semua elemen UI harus berada di dalamnya**. Canvas adalah Objek Game dengan komponen Canvas di dalamnya, dan semua elemen UI harus merupakan turunan dari Canvas tersebut.
+
+[]()
+
+Membuat elemen UI baru, seperti Gambar menggunakan menu GameObject > UI > Image, secara otomatis membuat Canvas, jika Canvas belum ada di scene. Elemen UI dibuat sebagai turunan dari Canvas ini.
+
+Area Canvas ditampilkan sebagai persegi panjang di Scene View. Hal ini memudahkan untuk memposisikan elemen UI tanpa perlu membuat Game View terlihat setiap saat.
+
+Canvas menggunakan objek EventSystem untuk membantu Sistem Pesan.
+
+## Canvas Features
+
+![Screenshot 2023-12-12 202836.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/683cf1ba-a388-4bfd-ab47-281067985053/Screenshot_2023-12-12_202836.png)
+
+Untuk menggunakan UI Pada canvas, telah tersedia beragam komponen yang siap digunakan, cukup lakukan GameObject > UI > dan pilih yang diinginkan. Ada beberapa komponen yang paling sering digunakan, yaitu;
+
+1. **Image :** Komponen untuk menampilkan gambar
+2. **Text :** Komponen untuk menampilkan text, bisa text yang ditulis di inspector, maupun text yang dapat berubah berdasarkan script
+3. **Panel :** Panel merupakan salah satu komponen UI yang kerap digunakan untuk mengelompokan komponen UI lainnya dengan menjadikan panel sebagai parent.
+4. **Button :** Button digunakan untuk menerima input click dari mouse. Button menggunakan event system yang siap digunakan untuk fungsi yang diinginkan
+
+## How To Use Canvas in VR Development
+
+Untuk menggunakan Canvas pada VR Development, ikuti langkah-langkah berikut:
+
+1. **Pertama** buat canvas baru di hierarchy.
+2. **Pada inspector > render mode**, ubah menjadi **World Space**. Tindakan ini dilakuakn agar canvas yang ada dapat di scale sesuai kebutuhan dan tidak selalu muncul di depan mata ketika mengguinakan VR.
+    
+    ![Screenshot 2023-12-12 203813 1.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/a1fdcdee-ab0a-43b3-bb8c-bef84c12a259/Screenshot_2023-12-12_203813_1.png)
+    
+3. **Add Component Tracked Device Graphic Raycaster,** Inspector > Add Component > **Tracked Device Graphic Raycaster**. Komponen ini memiliki fungsi untuk menerima input dari controller Oculus.
+    
+    ![Screenshot 2023-12-12 203742.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/fe5b451b-2fa2-45b8-8f97-67f012f5b7de/Screenshot_2023-12-12_203742.png)
+    
+4. Jika semua sudah dilakukan, konfigurasi kanvas sesuai yang dibutuhkan lalu tes apakah sudah sesuai
+
+<br/>
+<aside>
+🌟 **Study Case**
+
+1. Buat kanvas baru, ubah menjadi world space agar dapat digunakan untuk VR.
+2. Masukan beberapa button untuk mengganti scene.
+</aside>
+
+<br/>
+<aside>
+📚 **Tutorial and References**
+
+[Canvas | Unity UI | 1.0.0](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UICanvas.html)
+
+[Unity VR XR Interaction Toolkit - UI Menu and Interactions](https://youtu.be/Qb_8POkFwlk?si=DTMrqjLj91rdncfV)
+
+</aside>

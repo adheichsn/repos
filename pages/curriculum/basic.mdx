@@ -1,0 +1,92 @@
+# Basic VR Development using XR Interaction Toolkit
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Tools Pengembangan VR**: Memperoleh pengetahuan tentang tools yang digunakan untuk membuat pengalaman VR di Unity.
+2. **Kemampuan Manajemen Paket**: Memahami cara menggunakan Unity Package Manager untuk menginstal dan mengelola paket eksternal.
+3. **Integrasi Toolkit ke Proyek**: Belajar mengintegrasikan paket eksternal ke dalam proyek Unity, yang penting untuk pengembangan software.
+4. **Dasar Pengembangan XR**: Membangun pemahaman dasar tentang bagaimana pengembangan VR diatur dalam Unity.
+</aside>
+
+## What is XR Interaction Toolkit
+
+XR Interaction Toolkit di Unity adalah **sebuah alat yang membantu (Plugin)** kamu membuat dunia virtual dan augmented reality, yaitu dunia yang bisa kamu lihat melalui headset VR atau AR. Alat ini memberikan cara mudah untuk membuat karakter dan objek bisa berinteraksi dalam dunia virtual tersebut, seperti mengambil benda atau menggunakan controller untuk melakukan aksi.
+
+## XRI Features
+
+1. **XR Interaction Setup**: Model-controller yang sudah siap pakai untuk berbagai perangkat VR.
+2. **Interaktor dan Interactable**: Komponen yang memungkinkan objek untuk berinteraksi satu sama lain, seperti objek yang dapat diambil atau dioperasikan.
+3. **UI Interaction**: Komponen untuk interaksi dengan UI dalam lingkungan VR.
+4. **Locomotion dan Teleportation Systems**: Sistem untuk memungkinkan pengguna berpindah tempat dalam lingkungan VR.
+5. **Sample Scenes**: Contoh adegan yang menunjukkan bagaimana menggunakan berbagai fitur XR Interaction Toolkit.
+6. **Input Handling**: Pengaturan untuk mengelola input dari controller VR.
+7. **XR Device Simulator**: Memungkinkan simulasi interaksi jika tidak memiliki perangkat keras yang diperlukan atau untuk menguji interaksi tanpa memasuki headset.
+
+## Installation and Set-up
+
+![instal xri.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/775101a8-2635-4c49-b6fd-e9caadfdedd9/instal_xri.png)
+
+Untuk menginstal XR Interaction Toolkit di Unity, ikuti langkah-langkah berikut:
+
+1. **Buka Unity Editor** dan buka proyek Anda.
+2. **Buka Unity Package Manager**: Pergi ke **Window** > **Package Manager** di Unity Editor.
+3. **Cari XR Interaction Toolkit**: Di Package Manager, Anda bisa mencari 'XR Interaction Toolkit' di kolom pencarian.
+4. **Instal Package**: Setelah menemukan XR Interaction Toolkit, klik package tersebut dan tekan tombol 'Install' di panel detail.
+5. **Tunggu Proses Instalasi**: Proses instalasi akan memakan waktu beberapa saat. Setelah selesai, XR Interaction Toolkit akan tersedia di dalam proyek Unity Anda.
+6. **Verifikasi Instalasi**: Anda dapat memeriksa apakah toolkit telah terinstal dengan benar dengan mencari prefab atau komponen yang disediakan oleh toolkit di dalam Project Window.
+
+![setup project.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/03a2f24b-3f48-4f0a-b23a-b294b58f5376/setup_project.png)
+
+Untuk menginstal XR Plugin Management dan mengonfigurasi plug-in providers untuk Oculus di Unity, ikuti langkah-langkah berikut:
+
+1. **Buka Unity Editor** dan pilih proyek Anda.
+2. Pergi ke **Edit** > **Project Settings**.
+3. Dalam jendela Project Settings, cari dan pilih **XR Plugin Management**.
+4. Di sini, Anda akan melihat opsi untuk menginstal XR Plugin Management jika belum terinstal. Klik **Install XR Plugin Management**.
+5. Setelah terinstal, pilih platform target (misalnya, Windows atau Android untuk Oculus).
+6. Centang kotak di samping Oculus untuk mengaktifkan Oculus sebagai XR Plug-in Provider untuk platform tersebut.
+7. Pastikan Anda memiliki SDK Oculus yang diperlukan jika Anda mengembangkan untuk perangkat Oculus tertentu.
+8. Setelah selesai, simpan pengaturan dan tutup jendela Project Settings.
+
+Dengan mengikuti langkah-langkah ini, Anda akan mempersiapkan Unity untuk pengembangan dengan Oculus, memungkinkan Anda untuk membangun aplikasi VR yang kompatibel dengan perangkat Oculus.
+
+## Demo Scene
+
+![Demo Scene.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/7f2348ce-fc8f-4725-a5fd-c60862fbca47/Demo_Scene.png)
+
+Dalam sample scene yang tersedia di XR Interaction Toolkit, Anda akan menemukan beberapa interaksi dasar yang telah disiapkan sebagai contoh, termasuk:
+
+1. **Pengambilan dan Pemindahan Objek**: Interaksi ini memungkinkan pengguna untuk mengambil, memindahkan, dan meletakkan objek virtual. 
+2. **Poke Interaction**: fitur yang memungkinkan pengguna untuk melakukan interaksi 'menusuk' atau 'menyentuh' objek virtual di lingkungan VR, Seperti menekan tombol virtual atau menyentuh layar interaktif dalam aplikasi atau game VR.
+3. **Interaksi dengan UI**: Contoh dari bagaimana pengguna dapat berinteraksi dengan elemen UI, seperti tombol atau slider, menggunakan controller VR.
+4. **Sistem Teleportasi**: Demonstrasi dari cara pengguna dapat berpindah tempat dalam lingkungan VR, seringkali melalui sistem teleportasi.
+5. **Manipulasi Objek**: Termasuk contoh bagaimana objek dapat diputar atau diubah ukurannya.
+
+Sample scene ini memberikan dasar yang berguna untuk memahami dan mempelajari cara kerja interaksi dalam XR Interaction Toolkit.
+
+## How to use XRI assets
+
+![add xri.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/b77e0824-3f45-4622-aae9-f0a7b57ace80/add_xri.png)
+
+Untuk menggunakan asset dari XR Interaction Toolkit di Unity, Anda bisa mulai dengan mencari prefab tersebut di Project Window menggunakan kolom pencarian. Sebagai contoh, jika Anda ingin menambahkan controller VR, cari dan temukan prefab 'XR Interaction Setup'. Setelah menemukannya, seret prefab ini ke dalam scene Anda. Ini adalah cara sederhana untuk menambahkan elemen-elemen penting seperti VR controller ke proyek Unity Anda.
+
+<br/>
+<aside>
+🌟 **Study Case**
+
+1. Buat scene baru dan tambahkan Game Object plan ke dalam scene
+2. Tambahkan assets prefab XRI ke dalam scene. berikut list asset yang perlu anda tambahkan :
+    - XR Interaction Setup
+    - Interactables Sample
+    - Climb Sample
+    - Push Button
+    - UI Sample
+3. Tambahkan XR Device Simulator dan jalankan preview
+</aside>
+
+<br/>
+<aside>
+📚 **Tutorial and References**
+
+</aside>

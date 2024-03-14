@@ -1,0 +1,94 @@
+# Introduction to Unity Engine
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Dasar Unity dan Antarmukanya**: Siswa bisa mengidentifikasi dan menjelaskan fungsi dari berbagai jendela dan tab di Unity, seperti Hierarchy, Scene, Game, Project, dan Inspector.
+2. **Pembuatan dan Manajemen Scene**: Siswa mampu membuat scene baru, menambahkan objek dasar (seperti kubus, bola), dan mengatur tampilan dan hierarki objek dalam scene tersebut.
+3. **Penerapan Rigidbody dan Collider**: Siswa memahami dan bisa menerapkan komponen Rigidbody dan Collider pada objek, serta menjelaskan bagaimana komponen-komponen ini mempengaruhi fisika dan interaksi objek dalam game.
+4. **Penggunaan Komponen UI**: Siswa dapat membuat antarmuka pengguna dasar menggunakan komponen seperti Text, Button, Image, Slider, dan lain-lain, serta mengerti cara menghubungkannya dengan logika game.
+</aside>
+
+## What is unity engine?
+
+Unity Engine adalah platform pengembangan serbaguna yang digunakan secara luas untuk membuat game dan aplikasi interaktif, termasuk untuk VR dan AR. **Dikenal karena kemampuannya beroperasi lintas-platform**, Unity memungkinkan pembuatan konten untuk berbagai perangkat seperti PC, konsol, perangkat seluler, dan sistem VR/AR. Unity menawarkan lingkungan editor yang user-friendly dengan antarmuka grafis intuitif dan fitur drag-and-drop, memudahkan pengguna baru dan berpengalaman. **Penggunaan bahasa C# untuk scripting**, pendekatan pemrograman berbasis komponen, dan Asset Store yang ekstensif membuat Unity menjadi pilihan populer di kalangan pengembang. Dukungan terhadap grafik berkualitas tinggi, sistem rendering canggih, dan fisika realistis meningkatkan daya tarik Unity dalam penciptaan pengalaman visual yang imersif.
+
+Di luar dunia game, Unity juga digunakan di berbagai industri lain seperti arsitektur, rekayasa, dan simulasi pelatihan, berkat kemampuannya dalam menciptakan lingkungan 3D interaktif. **Komunitas pengembang yang besar dan aktif** di sekitar Unity menyediakan sumber daya berlimpah seperti tutorial, forum, dan dokumentasi, yang semakin memudahkan proses pembelajaran dan pengembangan. Unity tidak hanya memfasilitasi pengembangan konten yang kaya dan interaktif tetapi juga menawarkan fleksibilitas dan kemudahan kustomisasi untuk berbagai kebutuhan proyek, menjadikannya salah satu alat paling penting dan terkemuka dalam industri pengembangan game dan aplikasi interaktif.
+
+## How to create a new project
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/f13f7859-e65b-40b4-9f9d-abbd64622d53/Untitled.png)
+
+Untuk **membuat proyek baru di Unity**, pertama-tama pastikan Anda telah menginstal **Unity Hub** dan memiliki **akun Unity**. Dalam Unity Hub, instal **Unity Editor** dengan memilih versi yang sesuai untuk proyek Anda. Setelah itu, buka tab 'Projects' di Unity Hub dan klik **'New Project'** untuk memulai proyek baru, memilih template yang sesuai (seperti 3D, 2D, atau VR) dan menamai serta menentukan lokasi proyek Anda. Setelah Unity Editor terbuka dengan proyek baru Anda, mulailah konfigurasi awal dengan mengimpor aset, membuat scene, dan menambahkan objek. 
+
+## Windows in unity
+
+![Screenshot 2023-11-14 093056.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/c73cc638-29bb-4a8f-bbc1-b93c1927a571/Screenshot_2023-11-14_093056.png)
+
+Unity menyediakan berbagai jendela (windows) yang masing-masing memiliki fungsi spesifik untuk membantu dalam proses pengembangan game atau aplikasi. Berikut adalah beberapa jendela utama di Unity dan kegunaannya yang familiar digunakan pada saat pembuatan VR:
+
+1. **Scene View :** Tempat di mana Anda membuat dan memodifikasi scene Anda secara visual. Memungkinkan Anda untuk menempatkan dan mengatur objek, menyesuaikan lampu, kamera, dan komponen lainnya dalam tampilan 3D atau 2D.
+2. **Game View:** Menampilkan preview dari apa yang akan dilihat pemain ketika game berjalan. Memungkinkan Anda untuk menguji game dan melihat bagaimana elemen-elemen tertentu akan tampil selama gameplay.
+3. **Hierarchy Window:** Menampilkan semua objek dalam scene aktif sebagai struktur pohon. Memudahkan pengorganisasian objek, seperti mengelompokkan atau menentukan hierarki parent-child antara objek.
+4. **Inspector Window:** Menampilkan properti dan pengaturan dari objek yang sedang dipilih. Di sinilah Anda mengubah komponen, menyesuaikan variabel, dan menetapkan behavior objek.
+5. **Project Window:** Menunjukkan semua aset yang tersedia dalam proyek Anda. Memudahkan manajemen aset seperti skrip, model, tekstur, dan file audio, serta import dan ekspor aset.
+6. **Console Window:** Menampilkan log output, termasuk pesan kesalahan, peringatan, dan informasi debugging. Sangat berguna untuk mengidentifikasi dan menyelesaikan bug dalam game.
+7. **Asset Store Window:** Menyediakan akses langsung ke Unity Asset Store dari dalam editor. Memungkinkan pencarian, pembelian, dan download aset tambahan untuk proyek Anda.
+
+## Create a folder
+
+![2.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/e3ae9334-04f4-4685-91a5-af8a0748b805/2.png)
+
+pertama buka **Project Window** yang merupakan area di mana semua aset dan file proyek Anda disimpan. Di dalam Project Window, klik kanan di area kosong atau di dalam folder lain jika Anda ingin membuat subfolder, lalu pilih **Create** dari menu konteks yang muncul. Dari sana, pilih **Folder** dari daftar opsi. Setelah folder dibuat, Anda akan melihatnya muncul di Project Window, dan Anda dapat memberinya **nama** dengan mengklik sekali pada nama folder tersebut dan mengetikkan nama yang diinginkan. Folder ini sekarang dapat digunakan untuk **mengorganisir aset** Anda seperti skrip, model, tekstur, dan lainnya, membantu menjaga proyek Unity Anda tetap terstruktur dan rapi.
+
+## Create a scene
+
+![Screenshot 2023-11-14 091716.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/da62b15f-2de1-4af6-aba8-dfbdbd62f1aa/Screenshot_2023-11-14_091716.png)
+
+pertama buka **File** **menu** di bagian atas Unity Editor. Dari sana, pilih **'New Scene'** yang akan membuat scene kosong baru. Scene ini akan muncul di **Hierarchy Window** dengan beberapa elemen default seperti kamera dan lampu, tergantung pada template yang Anda gunakan. Setelah scene dibuat, Anda dapat mulai menambahkan objek dan aset ke dalamnya. Penting untuk menyimpan scene baru ini dengan pergi ke **File** > **'Save As...'**, lalu memilih lokasi di Project Window dan memberikan **nama file** untuk scene tersebut. 
+
+## Adding a new game object
+
+![Screenshot 2023-11-14 092729.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/69a64c4f-4c0c-4391-b5e8-7eca6964afe7/Screenshot_2023-11-14_092729.png)
+
+Di dalam Hierarchy Window di Unity, Anda dapat menambahkan berbagai jenis GameObject yang merupakan elemen dasar dalam pembuatan scene Unity. Berikut adalah beberapa contoh GameObject yang dapat Anda tambahkan:
+
+1. **Empty GameObject**: Objek kosong yang bisa dijadikan sebagai wadah untuk komponen atau digunakan sebagai parent bagi GameObject lain untuk organisasi yang lebih baik.
+2. **3D Objects**: Termasuk berbagai objek 3D dasar seperti Cube, Sphere, Cylinder, Plane, dan Capsule. Objek-objek ini dapat digunakan sebagai blok bangunan dasar untuk scene Anda.
+3. **2D Objects**: Jika Anda bekerja pada proyek 2D, Anda bisa menambahkan objek 2D seperti Sprites.
+4. **Light**: Menambahkan sumber cahaya ke scene, seperti Directional Light, Point Light, Spot Light, dan Area Light, yang masing-masing memberikan efek pencahayaan yang berbeda.
+5. **Camera**: Objek kamera digunakan untuk menentukan apa dan bagaimana sesuatu dilihat dalam game atau aplikasi. Anda dapat menambahkan lebih dari satu kamera dan mengatur propertinya sesuai kebutuhan.
+6. **Particle System**: Digunakan untuk membuat efek seperti api, asap, kabut, atau percikan yang meningkatkan realisme dan estetika visual.
+7. **Audio Source**: Untuk menambahkan komponen suara ke dalam scene, seperti musik latar atau efek suara.
+8. **UI Elements**: Termasuk berbagai elemen antarmuka pengguna seperti Text, Button, Image, Slider, dan Canvas, yang berguna untuk membuat menu dan antarmuka interaktif.
+9. **Scripts**: Menambahkan skrip C# yang telah Anda tulis untuk menambahkan logika dan interaksi khusus pada GameObject.
+
+## What is a component?
+
+![Screenshot 2023-11-14 094413.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/08d8a700-8bf7-4464-9942-3e9d4f28ec70/Screenshot_2023-11-14_094413.png)
+
+Dalam Unity, **komponen** adalah bagian penting dari arsitektur GameObject. Setiap GameObject dalam Unity terbuat dari satu atau lebih komponen yang menentukan bagaimana mereka berperilaku, terlihat, dan berinteraksi dengan objek lain dalam game. Komponen bisa berupa segala sesuatu mulai dari fisika seperti Rigidbody, collider, skrip yang ditulis pengguna, sistem animasi, renderer, dan banyak lagi.
+
+Saat membuat konten VR di Unity, beberapa komponen sering digunakan untuk memastikan pengalaman yang imersif dan interaktif. Berikut adalah komponen yang umumnya penting dalam pengembangan VR:
+
+1. **Physics Components**: Komponen seperti Rigidbody dan berbagai jenis Collider digunakan untuk menambahkan fisika realistis pada objek dan memungkinkan interaksi yang alami di lingkungan VR.
+2. **Audio Components**: Komponen Audio Listener dan Audio Source sangat penting untuk menciptakan pengalaman imersif dengan suara 3D yang menyesuaikan dengan gerakan dan orientasi pengguna.
+3. **UI Components for VR**: Komponen antarmuka pengguna yang dioptimalkan untuk VR, memungkinkan interaksi melalui kontroler VR dan menampilkan informasi dengan cara yang mudah diakses di lingkungan 3D.
+4. **Scripting Components**: Skrip C# yang menambahkan logika khusus dan mengontrol alur game, interaksi, dan perilaku objek dalam VR.
+5. **Lighting Components**: Untuk menciptakan pencahayaan yang realistis dan meningkatkan suasana serta kedalaman visual dalam VR.
+
+<br/>
+<aside>
+🌟 **Study Case**
+
+1. Buatlah new-project dengan nama “VRTrining_NamaAnda”.
+2. Buatlah sebuah scene sederhana di Unity yang mengandung objek dasar yaitu capsule dan kubus.
+3. Tambahkan komponen Rigidbody dan Collider pada objek dalam sebuah scene Unity dan jelaskan efeknya.
+4. Buatlah sebuah antarmuka pengguna sederhana yang berisi komponen Text, Button, Image, dan Slider.
+</aside>
+
+<br/>
+<aside>
+📚 **Tutorial and References**
+
+</aside>

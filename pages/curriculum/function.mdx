@@ -1,0 +1,69 @@
+# Function in Unity
+
+<aside>
+📌 **Capaian Pembelajaran**
+
+1. **Pemahaman Scripting Dasar di Unity**: Siswa mempelajari cara membuat script baru dalam C# dan memahami dasar-dasar scripting di Unity, termasuk menggunakan namespace dan fungsi.
+2. **Pemrograman Event-Driven**: Siswa mempelajari tentang pemrograman berbasis event, khususnya bagaimana event dapat dipicu dalam game, seperti melalui interaksi pengguna dengan UI (dalam kasus ini, tombol).
+3. **Pemahaman Scene Management**: Capaian ini mencakup pemahaman tentang bagaimana scene diatur dan dimuat dalam Unity, menggunakan **SceneManager** untuk mengganti scene.
+4. **Problem Solving dan Debugging**: Proses ini melibatkan pemecahan masalah dan debugging, terutama jika scene tidak dimuat dengan benar atau tombol tidak merespons. Siswa belajar bagaimana mendekati dan menyelesaikan masalah-masalah ini.
+5. **Pemahaman Build Settings dan Scene Configuration**: Siswa mendapatkan pemahaman tentang pentingnya pengaturan build di Unity dan bagaimana scene harus dikonfigurasi dan dikelola dalam Build Settings.
+</aside>
+
+## What is function in unity
+
+Fungsi merupakan blok kode yang merupakan bagian dari script, yang ditulis dalam bahasa pemrograman C#. Fungsi memungkinkan Anda untuk mengeksekusi sekelompok perintah atau tugas tertentu. Fungsi ini dapat dipanggil dari tempat lain dalam script Anda atau dari script lain, memungkinkan untuk modularitas dan penggunaan kembali kode. Fungsi sering kali diintegrasikan dengan sistem event Unity, sehingga bisa dijalankan sebagai respons terhadap input pengguna, seperti klik tombol, atau berdasarkan event dalam game, seperti awal atau akhir adegan. Ada beberapa fungsi bawaan Unity yang memiliki peran khusus, seperti **Start()** yang dijalankan saat GameObject pertama kali diaktifkan, dan **Update()** yang dijalankan setiap frame. Anda juga dapat membuat fungsi kustom sesuai dengan kebutuhan spesifik aplikasi atau game Anda, memungkinkan untuk menambahkan logika dan perilaku yang kompleks ke dalam proyek Unity Anda.
+
+## How to create a new script and function
+
+![new script.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/4445ca4b-882b-44ad-838d-07ffb7166cd4/new_script.png)
+
+Pertama, buat script baru di Unity. Anda bisa melakukannya dengan klik kanan di dalam Project Window, **pilih 'Create' > 'C# Script',** setelah itu Beri nama script tersebut **MySceneManager,** kemudian **tulis Fungsi untuk Mengganti Scene.** Untuk ini, Anda perlu menggunakan namespace **UnityEngine.SceneManagement**. Contoh kodenya adalah sebagai berikut:
+
+```csharp copy
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MySceneManager : MonoBehaviour
+{
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+}
+```
+
+**Tambahkan script ini ke sebuah GameObject**. Anda bisa menggunakan GameObject baru dengan nama “Script_MySceneManager” (klik kanan di Hierarchy Window, pilih 'Create Empty'). **Drag script “MySceneManager”** dari Project Window ke GameObject tersebut.
+
+## Call the function from the Button event ‘OnClick()’
+
+![call function.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/cf884237-d02e-4257-bf96-655575d8fe19/call_function.png)
+
+1. **Buat Tombol UI**: Jika belum ada, tambahkan tombol ke scene Anda (klik kanan di Hierarchy Window, pilih UI > Button).
+2. **Atur Event Tombol**: Pilih tombol di Hierarchy, lalu di Inspector Window, cari bagian 'Button (Script)' dan temukan bagian 'On Click ()'.
+3. **Tambahkan Aksi ke Event**: Klik '+' untuk menambahkan aksi baru. Seret GameObject yang memiliki script **MyScriptManager** MyScriptManager ke slot yang tersedia.
+4. **Pilih Fungsi**: Dengan GameObject terpilih, pilih fungsi **SceneChanger -> ChangeScene (String)**.
+5. **Tentukan Nama Scene**: Masukkan nama scene yang ingin Anda muat ke dalam field parameter. Pastikan nama scene tersebut sesuai dengan yang ada di Build Settings.
+
+## Scene Configuration in Build Settings
+
+![build settings.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/6ab59f96-5651-42d9-b147-b6276ed57ed6/29e45334-fe54-4fb5-9979-789978ca2a20/build_settings.png)
+
+1. Buka 'File' > 'Build Settings'.
+2. Pastikan semua scene yang akan Anda gunakan sudah ditambahkan di sini. Jika belum, tambahkan dengan menggunakan tombol 'Add Open Scenes' atau dengan menyeret file scene ke dalam daftar.
+
+<br/>
+<aside>
+🌟 **Study Case**
+
+1. Buat 2 Scene dengan nama ‘Scene 1’ dan ‘Scene 2’
+2. Buat sebuah script baru dengan nama ‘MySceneManager’ dan tambahkan fungsi yang memanggil ‘SceneManager.LoadScene’, dengan parameter string.
+3. Pada ‘Scene 1’ buat canvas baru yang di dalamnya terdapat satu Button.
+4. Panggil fungsi pindah scene menggunakan Event Button OnClick().
+</aside>
+
+<br/>
+<aside>
+📚 **Tutorial and References**
+
+</aside>
